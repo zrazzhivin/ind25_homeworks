@@ -21,6 +21,5 @@ public class Main {
         harryPotter.compare(hermioneJeanGranger);
         harryPotter.baseCompare(malfoi);
 
-
     }
 }

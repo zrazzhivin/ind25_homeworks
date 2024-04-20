@@ -21,6 +21,8 @@ public abstract class HogwartsStudent {
         return transgressionDistance;
     }
 
+    public abstract int calculateAbilitiesSum();
+
     public int calculateBaseAbilitiesSum() {
         return powerOfMagic + transgressionDistance;
     }
@@ -28,6 +30,19 @@ public abstract class HogwartsStudent {
     public void baseCompare(HogwartsStudent hogwartsStudent) {
         int sum1 = calculateBaseAbilitiesSum();
         int sum2 = hogwartsStudent.calculateBaseAbilitiesSum();
+
+        if (sum1 > sum2) {
+            System.out.println(name + " > " + hogwartsStudent.name);
+        } else if (sum1 < sum2) {
+            System.out.println(name + " < " + hogwartsStudent.name);
+        } else {
+            System.out.println(name + " == " + hogwartsStudent.name);
+        }
+    }
+
+    public void compare(HogwartsStudent hogwartsStudent) {
+        int sum1 = calculateAbilitiesSum();
+        int sum2 = hogwartsStudent.calculateAbilitiesSum();
 
         if (sum1 > sum2) {
             System.out.println(name + " > " + hogwartsStudent.name);

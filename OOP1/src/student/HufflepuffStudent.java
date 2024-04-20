@@ -25,21 +25,9 @@ public class HufflepuffStudent extends HogwartsStudent {
         return honest;
     }
 
+    @Override
     public int calculateAbilitiesSum() {
         return hardworking + loyal + honest;
-    }
-
-    public void compare(HufflepuffStudent student) {
-        int sum1 = calculateAbilitiesSum();
-        int sum2 = student.calculateAbilitiesSum();
-
-        if (sum1 > sum2) {
-            System.out.println(name + " > " + student.name);
-        } else if (sum1 < sum2) {
-            System.out.println(name + " < " + student.name);
-        } else {
-            System.out.println(name + " == " + student.name);
-        }
     }
 
     @Override

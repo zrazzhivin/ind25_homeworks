@@ -37,20 +37,8 @@ public class GryffindorStudent extends HogwartsStudent {
                 '}';
     }
 
+    @Override
     public int calculateAbilitiesSum() {
         return nobility + honor + courage;
-    }
-
-    public void compare(GryffindorStudent student) {
-        int sum1 = calculateAbilitiesSum();
-        int sum2 = student.calculateAbilitiesSum();
-
-        if (sum1 > sum2) {
-            System.out.println(name + " > " + student.name);
-        } else if (sum1 < sum2) {
-            System.out.println(name + " < " + student.name);
-        } else {
-            System.out.println(name + " == " + student.name);
-        }
     }
 }

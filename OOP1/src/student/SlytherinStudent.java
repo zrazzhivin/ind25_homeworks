@@ -37,21 +37,9 @@ public class SlytherinStudent extends HogwartsStudent {
         return lustForPower;
     }
 
+    @Override
     public int calculateAbilitiesSum() {
         return cunning + determination + ambition + resourcefulness + lustForPower;
-    }
-
-    public void compare(SlytherinStudent student) {
-        int sum1 = calculateAbilitiesSum();
-        int sum2 = student.calculateAbilitiesSum();
-
-        if (sum1 > sum2) {
-            System.out.println(name + " > " + student.name);
-        } else if (sum1 < sum2) {
-            System.out.println(name + " < " + student.name);
-        } else {
-            System.out.println(name + " == " + student.name);
-        }
     }
 
     @Override

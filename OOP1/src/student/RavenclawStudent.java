@@ -31,21 +31,9 @@ public class RavenclawStudent extends HogwartsStudent {
         return creativity;
     }
 
+    @Override
     public int calculateAbilitiesSum() {
         return smart + wise + witty + creativity;
-    }
-
-    public void compare(RavenclawStudent student) {
-        int sum1 = calculateAbilitiesSum();
-        int sum2 = student.calculateAbilitiesSum();
-
-        if (sum1 > sum2) {
-            System.out.println(name + " > " + student.name);
-        } else if (sum1 < sum2) {
-            System.out.println(name + " < " + student.name);
-        } else {
-            System.out.println(name + " == " + student.name);
-        }
     }
 
     @Override
