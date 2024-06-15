@@ -1,5 +1,7 @@
 package ru.skypro.stream.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public class Employee {
@@ -13,7 +15,7 @@ public class Employee {
     private static int counter;
 
     public Employee(String fullName, int salary, int department) {
-        this.fullName = fullName;
+        this.fullName = StringUtils.capitalize(fullName.toLowerCase());
         this.salary = salary;
         this.department = department;
         id = ++counter;

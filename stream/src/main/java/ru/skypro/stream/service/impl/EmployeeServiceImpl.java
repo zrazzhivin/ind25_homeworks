@@ -77,4 +77,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
     }
+
+    @Override
+    public Employee createEmployee(String fullName, int salary, int department) {
+        Employee employee = new Employee(fullName, salary, department);
+        employees.put(employee.getFullName(), employee);
+        return employees.get(employee.getFullName());
+    }
 }

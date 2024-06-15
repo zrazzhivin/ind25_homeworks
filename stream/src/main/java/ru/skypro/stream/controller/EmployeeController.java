@@ -1,6 +1,10 @@
 package ru.skypro.stream.controller;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +24,14 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @GetMapping
+    public ResponseEntity<Employee> createEmployee(String fullName, int salary, int department) {
+        if (!StringUtils.isAlpha(fullName)) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(employeeService.createEmployee(fullName, salary, department));
+    }
 
     @GetMapping("min-salary")
     public Employee getEmployeeWithMinSalary(int departmentId) {

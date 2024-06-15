@@ -14,4 +14,6 @@ public interface EmployeeService {
     List<Employee> getAllEmployees(int department);
 
     Map<Integer, List<Employee>> getAllEmployeesGroupedByDepartment();
+
+    Employee createEmployee(String fullName, int salary, int department);
 }
