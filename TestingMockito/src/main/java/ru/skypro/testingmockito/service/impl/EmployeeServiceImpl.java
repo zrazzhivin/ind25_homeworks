@@ -68,7 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Map<String, Employee> getAllEmployees() {
-        return employees;
+        return new HashMap<>(employees);
     }
 
     private String getEmployeeKey(String firstName, String lastName) {
