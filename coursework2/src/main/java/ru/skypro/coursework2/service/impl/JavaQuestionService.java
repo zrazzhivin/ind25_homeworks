@@ -1,5 +1,6 @@
 package ru.skypro.coursework2.service.impl;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import ru.skypro.coursework2.model.Question;
 import ru.skypro.coursework2.service.QuestionService;
@@ -17,6 +18,15 @@ public class JavaQuestionService implements QuestionService {
     private final Set<Question> questions = new HashSet<>();
 
     private final Random random = new Random();
+
+    @PostConstruct
+    public void init() {
+        add("Какие есть методы?", "Статические и не статические");
+        add("Как расшифровывается JDK?", "Java Development Kit");
+        add("Где хранятся примитивы?", "Стек");
+        add("Какой скоуп у бинов по-умолчанию?", "Синглтон");
+        add("Какая структура данных под капотом у LinkedList?", "Двусвязный список");
+    }
 
     @Override
     public Question add(String question, String answer) {
