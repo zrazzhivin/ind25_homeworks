@@ -54,4 +54,10 @@ public class FacultyController {
     public List<Faculty> findAllByNameIgnoreCaseOrColorIgnoreCase(String name, String color) {
         return facultyService.findAllByNameIgnoreCaseOrColorIgnoreCase(name, color);
     }
+
+    @GetMapping("{id}/students")
+    public List<Student> getStudents(@PathVariable Long id) {
+        return facultyService.getStudents(id);
+    }
+
 }
