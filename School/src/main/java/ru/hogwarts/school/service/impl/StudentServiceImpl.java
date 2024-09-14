@@ -1,5 +1,7 @@
 package ru.hogwarts.school.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
@@ -12,7 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class StudentServiceImpl implements StudentService {
 
+    private final Logger LOGGER = LoggerFactory.getLogger(StudentServiceImpl.class);
+
     private final StudentRepository studentRepository;
+
+    private final Object lock1 = new Object();
 
     public StudentServiceImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -81,5 +87,51 @@ public class StudentServiceImpl implements StudentService {
                 .mapToInt(Student::getAge)
                 .average()
                 .orElse(0);
+    }
+
+    @Override
+    public void printParallel() {
+        List<Student> students = studentRepository.findAll();
+
+        LOGGER.info(students.get(0).getName());
+        LOGGER.info(students.get(1).getName());
+
+        new Thread(() -> {
+            LOGGER.info(students.get(2).getName());
+            LOGGER.info(students.get(3).getName());
+        }).start();
+
+        new Thread(() -> {
+            LOGGER.info(students.get(4).getName());
+            LOGGER.info(students.get(5).getName());
+        }).start();
+    }
+
+    @Override
+    public void printSynchronized() {
+        List<Student> students = studentRepository.findAll();
+
+        printName(students.get(0));
+        printName(students.get(1));
+
+        Object lock = new Object();
+
+        new Thread(() -> {
+            synchronized (lock) {
+                printName(students.get(2));
+                printName(students.get(3));
+            }
+        }).start();
+
+        new Thread(() -> {
+            synchronized (lock) {
+                printName(students.get(4));
+                printName(students.get(5));
+            }
+        }).start();
+    }
+
+    private void printName(Student student) {
+        LOGGER.info(student.getName());
     }
 }
