@@ -20,4 +20,8 @@ public interface StudentService {
     List<Student> findAllByAgeBetween(int fromAge, int toAge);
 
     Faculty getFaculty(Long studentId);
+
+    List<String> startsWithA();
+
+    double getAverageAge();
 }

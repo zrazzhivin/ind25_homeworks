@@ -59,4 +59,14 @@ public class StudentController {
     public Faculty getFaculty(@PathVariable Long id) {
         return studentService.getFaculty(id);
     }
+
+    @GetMapping("startsWithA")
+    public List<String> startsWithA() {
+        return studentService.startsWithA();
+    }
+
+    @GetMapping("averageAge")
+    public double getAverageAge() {
+        return studentService.getAverageAge();
+    }
 }
